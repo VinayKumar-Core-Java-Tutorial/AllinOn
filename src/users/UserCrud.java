@@ -1,0 +1,162 @@
+package users;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserCrud {
+
+	public static int save(UserParam e){  
+        int status=0;  
+        try{  
+            Connection con=UserConnect.getConnection(); 
+            
+            PreparedStatement ps=con.prepareStatement(  
+                         "insert into users(uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd) values (?,?,?,?,?,?,?,?,?)");  
+            ps.setString(1,e.getUname());  
+            ps.setString(2,e.getUpwd()); 
+            ps.setString(3,e.getUemail()); 
+            ps.setString(4,e.getFcheck());
+            ps.setString(5, e.getFname());
+            ps.setString(6, e.getFpwd());
+            ps.setString(7, e.getGcheck());
+            ps.setString(8,e.getGname());
+            ps.setString(9, e.getGpwd());
+                          
+            status=ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return status;  
+    } 
+	public UserParam checkLogin(String uemail, String upwd)
+     {
+		UserParam e=new UserParam(); 
+        try{  
+            Connection con=UserConnect.getConnection(); 
+            
+            PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uemail = ? and upwd = ?"); 
+           
+ps.setString(1, uemail);
+ps.setString(2, upwd);
+
+ResultSet result = ps.executeQuery();
+
+
+
+if (result.next()) {
+    
+    e.setUname(result.getString("uname"));
+    e.setUemail(uemail);
+}
+
+con.close();
+        }catch(Exception ex){ex.printStackTrace();}
+return e;
+}
+	
+	public static UserParam getUserById(int id){  
+		UserParam e=new UserParam();  
+          
+        try{  
+            Connection con=UserConnect.getConnection();  
+            PreparedStatement ps=con.prepareStatement("select * from Users where id=?");  
+            ps.setInt(1,id);  
+           
+            ResultSet rs=ps.executeQuery();  
+            if(rs.next()){  
+                e.setId(rs.getInt(1)); 
+                e.setUname(rs.getString(2));  
+                e.setUpwd(rs.getString(3)); 
+                e.setUemail(rs.getString(4));
+                e.setFcheck(rs.getString(5));
+                e.setFname(rs.getString(6)); 
+                e.setFpwd(rs.getString(7));  
+                e.setGcheck(rs.getString(8));
+                e.setGname(rs.getString(9)); 
+                e.setGpwd(rs.getString(10));
+                 
+            }  
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+            
+        return e;  
+    }  
+	
+	 public static int update(UserParam e){  
+	        int status=0;  
+	        try{  
+	            Connection con=UserConnect.getConnection();  
+	            PreparedStatement ps=con.prepareStatement(  
+	                         "update Users set uname=?,upwd=?,uemail=? where id=?"); 
+	            ps.setString(1,e.getUname());  
+	            ps.setString(2,e.getUpwd()); 
+	            ps.setString(3,e.getUemail());  
+	            ps.setInt(4,e.getId());  
+	              
+	            status=ps.executeUpdate();  
+	              
+	            con.close();  
+	        }catch(Exception ex){ex.printStackTrace();}  
+	          
+	        return status;  
+	    }  
+	 public static int delete(int id){  
+	        int status=0;  
+	        try{  
+	            Connection con=UserConnect.getConnection();  
+	            PreparedStatement ps=con.prepareStatement("delete from Users where id=?");  
+	            ps.setInt(1,id);  
+	            status=ps.executeUpdate();  
+	              
+	            con.close();  
+	        }catch(Exception e){e.printStackTrace();}  
+	          
+	        return status;  
+	    }  
+	 
+	public static int addLinkValues(UserParam e){  
+        int status=0;  
+        try{  
+            Connection con=UserConnect.getConnection();  
+            PreparedStatement ps=con.prepareStatement("Update Users set fcheck=?, fname=?, fpwd=?, gcheck=?, gname=?, gpwd=? where id=?");   
+            
+            ps.setString(1,e.getFcheck());  
+            ps.setString(2,e.getFname()); 
+            ps.setString(3,e.getFpwd());  
+            ps.setString(4,e.getGcheck());  
+            ps.setString(5,e.getGname()); 
+            ps.setString(6,e.getGpwd());  
+            ps.setInt(7,e.getId()); 
+            
+            status=ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return status;  
+    } 
+	public static int deleteLinkValues(UserParam e){  
+        int status=0;  
+        try{  
+            Connection con=UserConnect.getConnection();  
+            PreparedStatement ps=con.prepareStatement("Update Users set fcheck=?, gcheck=? where id=?");   
+            
+            ps.setString(1,e.getFcheck());  
+  
+            ps.setString(2,e.getGcheck());  
+   
+            ps.setInt(3,e.getId()); 
+            
+            status=ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return status;  
+    } 
+    
+}

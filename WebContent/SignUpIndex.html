@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up</title>
+
+</head>
+<body>
+<form action="SaveUser" method="post">  
+	<table>  
+		<tr >
+			<td>Name:</td><td><input type="text" name="name"/></td>
+		</tr>  
+		<tr>
+			<td>Password:</td><td><input type="password" name="password"/></td>
+		</tr>  
+		<tr>
+			<td>Email:</td><td><input type="email" name="email"/></td>
+		</tr> 
+		
+		<tr>
+			<td></td>
+			<td><h4>Mark the credentials you want to add</h4></td>
+		</tr>
+		
+		<tr>
+			<td>
+				<input type="checkbox" name ="fcheck" id="fcheck" onclick="myFunction()" value = "1">
+				<label for= "fcheck">FaceBook</label>
+			</td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td >
+			    <table id="text" style="display:none">
+			      <tr><td>Name:</td><td><input type="text" name="fname"/></td></tr>  
+					<tr><td>Password:</td><td><input type="password" name="fpwd"/></td></tr>  
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="checkbox" id="gcheck" name = "gcheck" onclick="myFunction()" value = "1">
+				<label for= "gcheck">Gmail</label>
+			</td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td >
+			    <table id="text2" style="display:none">
+			      <tr><td>Name:</td><td><input type="text" name="gname"/></td></tr>  
+					<tr><td>Password:</td><td><input type="password" name="gpwd"/></td></tr>  
+				</table>
+			</td>
+		</tr>
+		<tr><td colspan="2"><input type="submit" value="Save User"/></td></tr>  
+	</table>
+</form>  
+
+<script>
+function myFunction() {
+  var checkBox = document.getElementById("fcheck");
+  var checkBox2 = document.getElementById("gcheck");
+  var text = document.getElementById("text");
+  var text2 = document.getElementById("text2");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } 
+  else {
+     text.style.display = "none";
+  }
+  if (checkBox2.checked == true){
+	  text2.style.display = "block";
+  }
+  else {
+     text2.style.display = "none";
+  }
+}
+</script>
+</body>
+
+</html>
