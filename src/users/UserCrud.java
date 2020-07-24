@@ -32,31 +32,7 @@ public class UserCrud {
           
         return status;  
     } 
-	public UserParam checkLogin(String uemail, String upwd)
-     {
-		UserParam e=new UserParam(); 
-        try{  
-            Connection con=UserConnect.getConnection(); 
-            
-            PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uemail = ? and upwd = ?"); 
-           
-ps.setString(1, uemail);
-ps.setString(2, upwd);
-
-ResultSet result = ps.executeQuery();
-
-
-
-if (result.next()) {
-    
-    e.setUname(result.getString("uname"));
-    e.setUemail(uemail);
-}
-
-con.close();
-        }catch(Exception ex){ex.printStackTrace();}
-return e;
-}
+	
 	
 	public static UserParam getUserById(int id){  
 		UserParam e=new UserParam();  

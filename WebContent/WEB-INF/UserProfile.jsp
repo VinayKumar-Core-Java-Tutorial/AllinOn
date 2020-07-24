@@ -62,11 +62,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
        
         
        <% if("1".equals(fcheck1)){
-        	out.print("<a href= 'FbGmailWelcome?facebookname = '"+request.getAttribute("fname")+"&gmailname ='"+request.getAttribute("gname")+"'>Facebook</a>");
-        }	
-        if("1".equals(gcheck1)){ %>
-        	<h5 class='w3-opacity'><a href= "FbGmailWelcome?facebookname= ${fname}&gmailname=${gname}">Gmail</a></h5>
-       <% }
+        	out.print("<a href= 'FbGmailWelcome?facebookname = '"+request.getAttribute("fname")+"'></a>");
+        	if("1".equals(fcheck1)){ %>
+        	<h5 class='w3-opacity'><a href= "FbGmailWelcome?facebookname= ${fname}">Facebook</a></h5>
+       <% } 
+       }
+       else if("1".equals(gcheck1)){
+    	   out.print("<a href= 'FbGmailWelcome?gmailname = '"+request.getAttribute("gname")+"'></a>");
+    	   if ("1".equals(gcheck1)){ %>
+       	<h5 class='w3-opacity'><a href= "FbGmailWelcome?gmailname= ${gname}">Gmail</a></h5>
+      <% }
+       }
+        
+        
         else{
         	out.print("<a href= 'ViewUser'>Add checkbox</a>");
         }

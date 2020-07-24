@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h5>Welcome ${gname}</h5>
+<h5>Welcome</h5>
+<h5>${fname }</h5>
+<h5>${gname }</h5>
+
 </body>
 </html>
