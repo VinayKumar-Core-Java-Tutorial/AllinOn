@@ -1,4 +1,4 @@
-package users;
+package com.usermanagement.model;
 
 public class UserParam {
 	private int id;

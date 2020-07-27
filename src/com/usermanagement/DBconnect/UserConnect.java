@@ -1,4 +1,4 @@
-package users;
+package com.usermanagement.DBconnect;
 
 import java.util.*;
 

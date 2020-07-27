@@ -5,6 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+
+body {
+  background-image: url('images/logo.png.png');
+    background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+</style>
 </head>
 <body>
 <div style="text-align: center">

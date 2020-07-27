@@ -1,4 +1,4 @@
-package users;
+package com.usermanagement.controller;
 
 import java.io.IOException;
 

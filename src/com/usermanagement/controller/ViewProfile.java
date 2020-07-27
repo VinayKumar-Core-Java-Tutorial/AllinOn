@@ -1,4 +1,4 @@
-package users;
+package com.usermanagement.controller;
 
 
 import java.io.IOException;  
@@ -10,16 +10,19 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;  
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
-import javax.servlet.http.HttpServletResponse;  
+import javax.servlet.http.HttpServletResponse;
+
+import com.usermanagement.dao.UserCrud;
+import com.usermanagement.model.UserParam;  
 @WebServlet("/ViewUser")  
 public class ViewProfile extends HttpServlet {  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)   
                throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-        
+       
         UserParam p = new UserParam();
-        p = UserCrud.getUserById(4);
+        p = UserCrud.getUserById(11);
         
         request.setAttribute("id", p.getId());
         request.setAttribute("username", p.getUname());
