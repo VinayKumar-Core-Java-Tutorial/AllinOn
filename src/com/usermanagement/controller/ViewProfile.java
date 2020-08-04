@@ -20,22 +20,23 @@ public class ViewProfile extends HttpServlet {
                throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-       
-        UserParam p = new UserParam();
-        p = UserCrud.getUserById(11);
         
-        request.setAttribute("id", p.getId());
-        request.setAttribute("username", p.getUname());
-        request.setAttribute("upwd", p.getUpwd());
-        request.setAttribute("uemail", p.getUemail());
-        request.setAttribute("fcheck", p.getFcheck());
-        request.setAttribute("fname", p.getFname());
-        request.setAttribute("fpwd", p.getFpwd());
-        request.setAttribute("gcheck", p.getGcheck());
-        request.setAttribute("gname", p.getGname());
-        request.setAttribute("gpwd", p.getGpwd());
+        
+        UserParam user = new UserParam();
+        user = UserCrud.getUserById(7);
+        
+        request.setAttribute("id", user.getId());
+        request.setAttribute("username", user.getUname());
+        request.setAttribute("upwd", user.getUpwd());
+        request.setAttribute("uemail", user.getUemail());
+        request.setAttribute("fcheck", user.getFcheck());
+        request.setAttribute("fname", user.getFname());
+        request.setAttribute("fpwd", user.getFpwd());
+        request.setAttribute("gcheck", user.getGcheck());
+        request.setAttribute("gname", user.getGname());
+        request.setAttribute("gpwd", user.getGpwd());
     	
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/UserProfile.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
         rd.forward(request, response);
     }  
 }  

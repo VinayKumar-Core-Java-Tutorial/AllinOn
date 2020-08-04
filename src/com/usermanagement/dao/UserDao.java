@@ -28,8 +28,16 @@ public class UserDao {
 
  if (result.next()) {
      user = new UserParam();
-     user.setUname(result.getString("uname"));
+     user.setId(result.getInt("id")); 
+     user.setUname(result.getString("uname"));  
+     user.setUpwd(result.getString("upwd")); 
      user.setUemail(email);
+     user.setFcheck(result.getString("fcheck"));
+     user.setFname(result.getString("fname")); 
+     user.setFpwd(result.getString("fpwd"));  
+     user.setGcheck(result.getString("gcheck"));
+     user.setGname(result.getString("gname")); 
+     user.setGpwd(result.getString("gpwd"));
  }
 
  con.close();
