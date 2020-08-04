@@ -1,8 +1,36 @@
 package com.usermanagement.model;
 
+import java.security.SecureRandom;
+import org.apache.commons.lang3.RandomStringUtils;
+
 public class UserParam {
 	private int id;
-	private String uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd;
+	private String uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd,firstname,lastname,uniqueid;
+	public String getUniqueid() {
+		return uniqueid;
+	}
+	public void setUniqueid() {
+		SecureRandom random = new SecureRandom();
+	    int num = random.nextInt(100000);
+	    String formatted = String.format("%05d", num); 
+	    String unqid = (getFirstname().toUpperCase())+formatted;
+		this.uniqueid = unqid;
+	}
+	public void setUniqueid(String uniqueid) {
+		this.uniqueid = uniqueid;
+	}
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 	public int getId() {
 		return id;
 	}
@@ -13,15 +41,20 @@ public class UserParam {
 	public String getUname() {
 		return uname;
 	}
-	public void setUname(String uname) {
-		this.uname = uname;
+	public void setUname(String firstname,String lastname) {
+		this.uname = firstname+lastname;
 	}
 	public String getUpwd() {
 		return upwd;
 	}
-	public void setUpwd(String upwd) {
+	public void setUpwd() {    
+		String upwd = RandomStringUtils.randomAlphanumeric(10);
 		this.upwd = upwd;
 	}
+	public void setUpwd(String upwd) {    
+		this.upwd = upwd;
+	}
+	
 	public String getUemail() {
 		return uemail;
 	}

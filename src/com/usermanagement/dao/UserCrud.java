@@ -9,6 +9,7 @@ import java.util.List;
 import com.usermanagement.DBconnect.UserConnect;
 import com.usermanagement.model.UserParam;
 
+
 public class UserCrud {
 
 	public static int save(UserParam e){  
@@ -17,7 +18,7 @@ public class UserCrud {
             Connection con=UserConnect.getConnection(); 
             
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into users(uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd) values (?,?,?,?,?,?,?,?,?)");  
+                         "insert into users(uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd,firstname,lastname,uniqueid) values (?,?,?,?,?,?,?,?,?,?,?,?)");  
             ps.setString(1,e.getUname());  
             ps.setString(2,e.getUpwd()); 
             ps.setString(3,e.getUemail()); 
@@ -27,6 +28,9 @@ public class UserCrud {
             ps.setString(7, e.getGcheck());
             ps.setString(8,e.getGname());
             ps.setString(9, e.getGpwd());
+            ps.setString(10, e.getFirstname());
+            ps.setString(11,e.getLastname());
+            ps.setString(12,e.getUniqueid());
                           
             status=ps.executeUpdate();  
               
@@ -48,8 +52,8 @@ public class UserCrud {
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
                 e.setId(rs.getInt(1)); 
-                e.setUname(rs.getString(2));  
-                e.setUpwd(rs.getString(3)); 
+//                e.setUname(rs.getString(2));  
+//                e.setUpwd(rs.getString(3)); 
                 e.setUemail(rs.getString(4));
                 e.setFcheck(rs.getString(5));
                 e.setFname(rs.getString(6)); 
@@ -118,6 +122,25 @@ public class UserCrud {
           
         return status;  
     } 
+	
+	public static int changepwd(UserParam e){  
+        int status=0;  
+        try{  
+            Connection con=UserConnect.getConnection();  
+            System.out.print(e.getUniqueid());
+            PreparedStatement ps=con.prepareStatement(  
+                         "update Users set upwd=? where uniqueid=?"); 
+            ps.setString(1,e.getUpwd());  
+            ps.setNString(2, e.getUniqueid());
+              
+            status=ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return status;  
+    } 
+	
 	public static int deleteLinkValues(UserParam e){  
         int status=0;  
         try{  

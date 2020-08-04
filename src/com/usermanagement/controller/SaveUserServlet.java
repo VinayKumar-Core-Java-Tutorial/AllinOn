@@ -2,12 +2,13 @@ package com.usermanagement.controller;
 
 import java.io.IOException;  
 import java.io.PrintWriter;  
-  
+
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;  
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
+
 
 import com.usermanagement.dao.UserCrud;
 import com.usermanagement.model.UserParam;
@@ -18,9 +19,10 @@ public class SaveUserServlet extends HttpServlet {
 	         throws ServletException, IOException {  
 	        response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
+	       
 	          
-	        String name=request.getParameter("name");  
-	        String password=request.getParameter("password");  
+	        String firstname=request.getParameter("firstname");  
+	        String lastname=request.getParameter("lastname");
 	        String email=request.getParameter("email"); 
 	        String fcheck = request.getParameter("fcheck");
 	        String fname = request.getParameter("fname");
@@ -31,8 +33,8 @@ public class SaveUserServlet extends HttpServlet {
 
 	          
 	        UserParam e=new UserParam();  
-	        e.setUname(name);  
-	        e.setUpwd(password);  
+	        e.setUname(firstname,lastname);  
+	        e.setUpwd();  
 	        e.setUemail(email); 
 	        e.setFcheck(fcheck);
 	        e.setFname(fname);
@@ -40,8 +42,22 @@ public class SaveUserServlet extends HttpServlet {
 	        e.setGcheck(gcheck);
 	        e.setGname(gname);
 	        e.setGpwd(gpwd);
-	          
+	        e.setFirstname(firstname);
+	        e.setLastname(lastname);
+	        e.setUniqueid();
+	        
 	        int status=UserCrud.save(e);  
+	        
+	        String args[] = new String[5];
+	        args[0] = firstname;
+	        args[1] = lastname;
+	        args[2] = email;
+	        args[3] = e.getUniqueid();
+	        args[4] = e.getUpwd();
+	        
+	        SendEmail.main(args);
+	          
+	        
 	        if(status>0){  
 	            out.print("<p>Record saved successfully! Please try to login</p>");  
 	            request.getRequestDispatcher("index.html").include(request, response);  
