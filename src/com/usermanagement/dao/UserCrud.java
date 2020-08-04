@@ -51,7 +51,7 @@ public class UserCrud {
            
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
-<<<<<<< HEAD
+
                 e.setId(rs.getInt(1)); 
 //                e.setUname(rs.getString(2));  
 //                e.setUpwd(rs.getString(3)); 
@@ -62,18 +62,7 @@ public class UserCrud {
                 e.setGcheck(rs.getString(8));
                 e.setGname(rs.getString(9)); 
                 e.setGpwd(rs.getString(10));
-=======
-                e.setId(rs.getInt("id")); 
-                e.setUname(rs.getString("uname"));  
-                e.setUpwd(rs.getString("upwd")); 
-                e.setUemail(rs.getString("uemail"));
-                e.setFcheck(rs.getString("fcheck"));
-                e.setFname(rs.getString("fname")); 
-                e.setFpwd(rs.getString("fpwd"));  
-                e.setGcheck(rs.getString("gcheck"));
-                e.setGname(rs.getString("gname")); 
-                e.setGpwd(rs.getString("gpwd"));
->>>>>>> branch 'master' of https://github.com/VinayKumar-Core-Java-Tutorial/AllinOn.git
+
                  
             }  
             con.close();  
