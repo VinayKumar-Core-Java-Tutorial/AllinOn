@@ -8,7 +8,7 @@
 <style>
 
 body {
-  background-image: url('images/logo.png.png');
+  background-image: url('');
     background-repeat: no-repeat;
   background-attachment: fixed; 
   background-size: 100% 100%;
