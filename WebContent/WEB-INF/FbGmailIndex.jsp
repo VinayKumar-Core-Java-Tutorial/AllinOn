@@ -8,8 +8,8 @@
 </head>
 <body>
 <h5>Welcome</h5>
-<h5>${fname }</h5>
-<h5>${gname }</h5>
+<h5>${user.fname }</h5>
+<h5>${user.gname }</h5>
 
 </body>
 </html>

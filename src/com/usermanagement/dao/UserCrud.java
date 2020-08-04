@@ -47,16 +47,16 @@ public class UserCrud {
            
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
-                e.setId(rs.getInt(1)); 
-                e.setUname(rs.getString(2));  
-                e.setUpwd(rs.getString(3)); 
-                e.setUemail(rs.getString(4));
-                e.setFcheck(rs.getString(5));
-                e.setFname(rs.getString(6)); 
-                e.setFpwd(rs.getString(7));  
-                e.setGcheck(rs.getString(8));
-                e.setGname(rs.getString(9)); 
-                e.setGpwd(rs.getString(10));
+                e.setId(rs.getInt("id")); 
+                e.setUname(rs.getString("uname"));  
+                e.setUpwd(rs.getString("upwd")); 
+                e.setUemail(rs.getString("uemail"));
+                e.setFcheck(rs.getString("fcheck"));
+                e.setFname(rs.getString("fname")); 
+                e.setFpwd(rs.getString("fpwd"));  
+                e.setGcheck(rs.getString("gcheck"));
+                e.setGname(rs.getString("gname")); 
+                e.setGpwd(rs.getString("gpwd"));
                  
             }  
             con.close();  
