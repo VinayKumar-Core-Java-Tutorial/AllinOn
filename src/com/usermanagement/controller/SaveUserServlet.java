@@ -30,6 +30,8 @@ public class SaveUserServlet extends HttpServlet {
 	        String gcheck = request.getParameter("gcheck");
 	        String gname = request.getParameter("gname");
 	        String gpwd = request.getParameter("gpwd");
+	        String phonenumber = request.getParameter("phonenumber");
+	        String address = request.getParameter("address");
 
 	          
 	        UserParam e=new UserParam();  
@@ -42,20 +44,23 @@ public class SaveUserServlet extends HttpServlet {
 	        e.setGcheck(gcheck);
 	        e.setGname(gname);
 	        e.setGpwd(gpwd);
+	        e.setPhonenumber(phonenumber);
+	        e.setAddress(address);
 	        e.setFirstname(firstname);
 	        e.setLastname(lastname);
 	        e.setUniqueid();
 	        
 	        int status=UserCrud.save(e);  
 	        
-	        String args[] = new String[5];
+	        String args[] = new String[6];
 	        args[0] = firstname;
 	        args[1] = lastname;
 	        args[2] = email;
 	        args[3] = e.getUniqueid();
 	        args[4] = e.getUpwd();
+	        args[5] = firstname + " " + lastname;
 	        
-	        SendEmail.main(args);
+	        Email.main(args);
 	          
 	        
 	        if(status>0){  

@@ -18,7 +18,7 @@ public class UserCrud {
             Connection con=UserConnect.getConnection(); 
             
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into users(uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd,firstname,lastname,uniqueid) values (?,?,?,?,?,?,?,?,?,?,?,?)");  
+                         "insert into users(uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd,phone,address,uniqueid,firstname,lastname) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");  
             ps.setString(1,e.getUname());  
             ps.setString(2,e.getUpwd()); 
             ps.setString(3,e.getUemail()); 
@@ -28,9 +28,11 @@ public class UserCrud {
             ps.setString(7, e.getGcheck());
             ps.setString(8,e.getGname());
             ps.setString(9, e.getGpwd());
-            ps.setString(10, e.getFirstname());
-            ps.setString(11,e.getLastname());
+            ps.setString(10, e.getPhonenumber());
+            ps.setString(11, e.getAddress());
             ps.setString(12,e.getUniqueid());
+            ps.setString(13, e.getFirstname());
+            ps.setString(14,e.getLastname());
                           
             status=ps.executeUpdate();  
               
@@ -129,7 +131,6 @@ public class UserCrud {
         int status=0;  
         try{  
             Connection con=UserConnect.getConnection();  
-            System.out.print(e.getUniqueid());
             PreparedStatement ps=con.prepareStatement(  
                          "update Users set upwd=? where uniqueid=?"); 
             ps.setString(1,e.getUpwd());  

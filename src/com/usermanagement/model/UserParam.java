@@ -5,7 +5,19 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class UserParam {
 	private int id;
-	private String uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd,firstname,lastname,uniqueid;
+	private String uname,upwd,uemail,fcheck,fname,fpwd,gcheck,gname,gpwd,firstname,lastname,uniqueid,phonenumber,address;
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getUniqueid() {
 		return uniqueid;
 	}

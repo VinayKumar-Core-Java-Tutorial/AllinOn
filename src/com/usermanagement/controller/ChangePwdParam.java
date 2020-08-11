@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
+
 @WebServlet("/ChangePwdParam")  
 public class ChangePwdParam extends HttpServlet {  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)   
@@ -29,7 +30,6 @@ public class ChangePwdParam extends HttpServlet {
         request.setAttribute("uniqueid", uniqueid);
         request.setAttribute("upwd", upwd);
         
-//        System.out.print(uniqueid);
         RequestDispatcher rd = request.getRequestDispatcher("/ChangePasswordForm.jsp");
         rd.forward(request, response);
        

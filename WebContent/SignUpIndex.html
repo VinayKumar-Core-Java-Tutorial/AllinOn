@@ -3,69 +3,86 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Sign Up</title>
-
+<script src=Javascript/indexpage.jsp></script>
+<link rel="stylesheet" href="CSS/indexpage.css" type="text/css" />
+<style>
+div {
+  background-color: cream;
+  background-image: url("images/indexlogo.jpg");
+   background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+</style>
 </head>
 <body>
-<form action="SaveUser" method="post">  
-	<table>  
-		<tr >
-			<td>First Name:</td><td><input type="text" name="firstname"/></td>
-		</tr>  
-		<tr >
-			<td>Last Name:</td><td><input type="text" name="lastname"/></td>
-		</tr>
-	
-		<tr >
-			<td>Phone Number:</td><td><input type="text" name="phonenumber"/></td>
-		</tr>
-		<tr>
-			<td>Email:</td><td><input type="email" name="email"/></td>
-		</tr> 
-		<tr >
-			<td>Address:</td><td><input type="text" name="address"/></td>
-		</tr>
-		
-		<tr>
-			<td></td>
-			<td><h4>Mark the credentials you want to add</h4></td>
-		</tr>
-		
-		<tr>
-			<td>
-				<input type="checkbox" name ="fcheck" id="fcheck" onclick="myFunction()" value = "1">
-				<label for= "fcheck">FaceBook</label>
-			</td>
-		</tr>
-		
-		<tr>
-			<td></td>
-			<td >
-			    <table id="text" style="display:none">
-			      <tr><td>Name:</td><td><input type="text" name="fname"/></td></tr>  
-					<tr><td>Password:</td><td><input type="password" name="fpwd"/></td></tr>  
+<div class="cotn_principal">
+	<div class="cont_back_info3">
+		<div style="text-align: center">
+			<h3>User SignUp</h3>
+			<br><br>
+			<form action="SaveUser" method="post">  
+				<table>  
+					<tr>
+						<td><b>First Name:</b></td><td><input type="text" name="firstname" pattern="[^-,$#%*@&(){}]+" title="Enter alphabets" required/></td>
+					</tr>  
+					<tr>
+						<td><b>Last Name:</b></td><td><input type="text" name="lastname" pattern="[^-,$#%*@&(){}]+" title="Enter alphabets" required/></td>
+					</tr>
+				
+					<tr>
+						<td><b>Phone Number:</b></td><td><input type="text" name="phonenumber"/></td>
+					</tr>
+					<tr>
+						<td><b>Email:</b></td><td><input type="email" name="email" required/></td>
+					</tr> 
+					<tr >
+						<td><b>Address:</b></td><td><input type="text" name="address"/></td>
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td><h4>Mark the credentials you want to add</h4></td>
+					</tr>
+					
+					<tr>
+						<td>
+							<input type="checkbox" name ="fcheck" id="fcheck" onclick="myFunction()" value = "1">
+							<label for= "fcheck">FaceBook</label>
+						</td>
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td >
+						    <table id="text" style="display:none">
+						      <tr><td>Name:</td><td><input type="text" name="fname"/></td></tr>  
+								<tr><td>Password:</td><td><input type="password" name="fpwd"/></td></tr>  
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox" id="gcheck" name = "gcheck" onclick="myFunction()" value = "1">
+							<label for= "gcheck">Gmail</label>
+						</td>
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td >
+						    <table id="text2" style="display:none">
+						      <tr><td>Name:</td><td><input type="text" name="gname"/></td></tr>  
+								<tr><td>Password:</td><td><input type="password" name="gpwd"/></td></tr>  
+							</table>
+						</td>
+					</tr>
+					<tr><td colspan="2"><button class="btn_sign_up" onclick="cambiar_sign_up()">Sign Up</button></td></tr>  
 				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<input type="checkbox" id="gcheck" name = "gcheck" onclick="myFunction()" value = "1">
-				<label for= "gcheck">Gmail</label>
-			</td>
-		</tr>
-		
-		<tr>
-			<td></td>
-			<td >
-			    <table id="text2" style="display:none">
-			      <tr><td>Name:</td><td><input type="text" name="gname"/></td></tr>  
-					<tr><td>Password:</td><td><input type="password" name="gpwd"/></td></tr>  
-				</table>
-			</td>
-		</tr>
-		<tr><td colspan="2"><input type="submit" value="Save User"/></td></tr>  
-	</table>
-</form>  
-
+			</form>  
+		</div>
+	</div>
+</div>
 <script>
 function myFunction() {
   var checkBox = document.getElementById("fcheck");

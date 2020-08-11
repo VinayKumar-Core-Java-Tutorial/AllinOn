@@ -21,19 +21,17 @@ public class ChangePwd extends HttpServlet {
         String uniqueid=request.getParameter("uniqueid");  
         String fname=request.getParameter("firstname");  
         String lname=request.getParameter("lastname"); 
-        String upwd = request.getParameter("upwd");
+        String upwd = request.getParameter("newupwd");
           
         UserParam e=new UserParam();  
         e.setFirstname(fname);
         e.setLastname(lname);
         e.setUniqueid(uniqueid);
         e.setUpwd(upwd);
-       
-        System.out.print(e.getUniqueid());
-          
+                 
         int status=UserCrud.changepwd(e);  
         if(status>0){  
-            response.sendRedirect("ViewUser");  
+            response.sendRedirect("index.html");  
         }else{  
             out.println("Sorry! unable to update record");  
         }  

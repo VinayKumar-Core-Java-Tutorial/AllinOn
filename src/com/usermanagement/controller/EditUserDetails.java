@@ -27,7 +27,7 @@ public class EditUserDetails extends HttpServlet {
           
         UserParam e=new UserParam();  
         e.setId(id);        
-        e.setUname(name);  
+        e.setFirstname(name);  
         e.setUpwd(password);  
         e.setUemail(email); 
        
